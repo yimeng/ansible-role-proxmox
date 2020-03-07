@@ -1,0 +1,25 @@
+---
+galaxy_info:
+  role_name: proxmox
+  author: yimeng
+  description: Provision Proxmox KVM with Ansible
+  license: BSD
+  company: yimeng
+  min_ansible_version: 2.7
+  galaxy_tags:
+    - proxmox
+    - proxmoxer
+    - kvm
+  platforms:
+    - name: EL
+      versions:
+        - 7
+        - 6
+    - name: Debian
+      versions:
+        - stretch
+    - name: Ubuntu
+      versions:
+        - xenial
+        - bionic
+dependencies: []

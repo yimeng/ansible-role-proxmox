@@ -1,0 +1,13 @@
+---
+# defaults file for proxmox
+# ---
+# defaults file for yimeng.proxmox
+pve_api_port: 8006
+pve_kvm_state: "started"
+pve_api_host: "{{ pve_node }}"
+
+# Where your container image templates are located
+# You may need to set this to another storage source
+# ie "cephfs_data"
+pve_ct_storage_location: local
+
