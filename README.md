@@ -23,9 +23,28 @@ Example Playbook
 
 Including an example of how to use your role (for instance, with variables passed in as parameters) is always nice for users too:
 
-    - hosts: servers
-      roles:
-         - { role: username.rolename, x: 42 }
+---
+- hosts: proxmox
+  remote_user: root
+  vars:
+    api_username:
+    api_password:
+    api_host:
+  roles:
+  - {
+      role: yimeng.proxmox,
+      api_username: "root@pam",
+      api_password: "",
+      api_host: "",
+      vm_id: 122,
+    }
+  - {
+      role: yimeng.proxmox,
+      api_username: "root@pam",
+      api_password: "",
+      api_host: "",
+      vm_id: 123,
+   }
 
 License
 -------
