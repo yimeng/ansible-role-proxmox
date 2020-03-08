@@ -26,10 +26,6 @@ Including an example of how to use your role (for instance, with variables passe
 ---
 - hosts: proxmox
   remote_user: root
-  vars:
-    pox_username: "root@pam"
-    pox_password: ""
-    pox__host: ""
   roles:
   - {
       role: yimeng.proxmox,
@@ -39,6 +35,14 @@ Including an example of how to use your role (for instance, with variables passe
       role: yimeng.proxmox,
       vm_id: 123,
    }
+
+hosts:
+[proxmox]
+127.0.0.1
+[proxmox:vars]
+api_username="root@pam"
+api_password=""
+api_host="127.0.0.1"
 
 License
 -------
