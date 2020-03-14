@@ -1,8 +1,8 @@
 ---
 # tasks file for proxmox
 - name: get vmid
-    shell: "pvesh get /cluster/nextid"
-    register: next_id
+  shell: "pvesh get /cluster/nextid"
+  register: next_id
 - name: Provision kvm
   proxmox_kvm:
     api_user    : "{{ api_username }}"
