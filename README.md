@@ -28,14 +28,12 @@ Including an example of how to use your role (for instance, with variables passe
 - hosts: proxmox
   remote_user: root
   roles:
-  - {
-      role: yimeng.proxmox,
-      vm_id: 122,
-    }
-  - {
-      role: yimeng.proxmox,
-      vm_id: 123,
-   }
+
+  # create kvm with auto get vm_id
+  - { role: yimeng.proxmox,state: "present"}
+
+  # delete kvm with given vm_id 112
+  - { role: yimeng.proxmox,vm_id: "112",state: "absent"}
 
 hosts:
 [proxmox]
