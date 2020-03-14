@@ -2,14 +2,25 @@
 # tasks file for proxmox
 - name: get vmid
   shell: "pvesh get /cluster/nextid"
+  when: state == "present"
   register: next_id
+- debug:
+    var: next_id
+
+- name: delete vmid
+  shell: "qm list |grep {{ vm_id }}|awk '{print $1}'"
+  when: state == "absent"
+  register: delete_id
+- debug:
+    var: delete_id
+
 - name: Provision kvm
   proxmox_kvm:
     api_user    : "{{ api_username }}"
     api_password: "{{ api_password }}"
     api_host    : "{{ api_host }}"
-    vmid        : "{{ next_id.stdout|int * 1 }}"
-    name        : "{{ next_id.stdout}}"
+    vmid        : "{{ delete_id.stdout|default(next_id.stdout)|int * 1 }}"
+    name        : "{{ delete_id.stdout|default(next_id.stdout) }}"
     node        : "{{ node_name }}"
     ide         : "{{ cd_rom }}"
     net         : "{{ net_work }}"
